@@ -1,13 +1,22 @@
-package com.abuzar.CrudSpringBoot;
+package com.abuzar.CrudSpringBoot.Entities;
 
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Challenge {
-
+    @Id
     private long id;
     private String name;
     private String description;
+
+    @Column(name = "challengeMonth")
     private String month;
 
 
+    public Challenge(){}
     public Challenge(long id, String name, String description, String month) {
         this.id = id;
         this.name = name;

@@ -1,7 +1,8 @@
 package com.abuzar.CrudSpringBoot.Controller;
 
-import com.abuzar.CrudSpringBoot.Challenge;
+import com.abuzar.CrudSpringBoot.Entities.Challenge;
 import com.abuzar.CrudSpringBoot.Service.ChallengeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/challenges")
 public class ChallengeController {
 
    private ChallengeService challengeService;
@@ -18,12 +20,12 @@ public class ChallengeController {
         this.challengeService = challengeService;
     }
 
-    @GetMapping("/challenges")
+    @GetMapping
     public List<Challenge> getAllChallenges() {
         return challengeService.getAllChallenges();
     }
 
-    @PostMapping("/challenges")
+    @PostMapping
     public ResponseEntity<String> addChallenge(@RequestBody Challenge challenge) {
         boolean isChallengeAdded = challengeService.addChallenge(challenge);
         if (isChallengeAdded) {
@@ -33,9 +35,9 @@ public class ChallengeController {
         }
     }
 
-    @GetMapping("/challenges/{month}")
+    @GetMapping("/{month}")
     public ResponseEntity<Challenge> getChallengeById(@PathVariable String month) {
-        Challenge challenge =  challengeService.getChallengeById(month);
+        Challenge challenge =  challengeService.getChallenge(month);
         if (challenge != null){
             return new ResponseEntity<>(challenge, HttpStatus.OK);
         } else {
@@ -43,7 +45,7 @@ public class ChallengeController {
         }
     }
 
-    @PutMapping("/challenges/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String>  updateChallenge(@PathVariable long id, @RequestBody Challenge updatedChallenge) {
         boolean isUpdated = challengeService.updateChallenge(id, updatedChallenge);
         if (isUpdated) {
@@ -53,7 +55,7 @@ public class ChallengeController {
         }
     }
 
-    @DeleteMapping("/challenges/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteChallenge(@PathVariable long id) {
         boolean isDeleted = challengeService.deleteChallenge(id);
         if (isDeleted) {
