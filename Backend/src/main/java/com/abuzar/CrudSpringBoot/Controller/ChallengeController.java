@@ -2,7 +2,6 @@ package com.abuzar.CrudSpringBoot.Controller;
 
 import com.abuzar.CrudSpringBoot.Entities.Challenge;
 import com.abuzar.CrudSpringBoot.Service.ChallengeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
