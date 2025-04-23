@@ -5,12 +5,23 @@ public class Challenge {
     private long id;
     private String name;
     private String description;
+    private String month;
 
 
-    public Challenge(long id, String name, String description) {
+    public Challenge(long id, String name, String description, String month) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.month = month;
+
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
     }
 
     public long getId() {
